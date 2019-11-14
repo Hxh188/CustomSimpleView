@@ -1,0 +1,2 @@
+include ':app', ':simpleview_lib'
+rootProject.name='CustomSimpleView'
