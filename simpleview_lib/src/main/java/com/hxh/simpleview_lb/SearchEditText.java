@@ -29,6 +29,9 @@ public class SearchEditText extends AppCompatEditText {
         init();
     }
 
+    /**
+     * 初始化
+     */
     private void init()
     {
         Drawable draLeft = getResources().getDrawable(R.drawable.icon_search);
