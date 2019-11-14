@@ -1,4 +1,4 @@
-package com.hxh.simpleview_lb;
+package com.hxh.simpleview_lib;
 
 import android.content.Context;
 

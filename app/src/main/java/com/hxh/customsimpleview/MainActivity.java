@@ -3,9 +3,10 @@ package com.hxh.customsimpleview;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
-import com.hxh.simpleview_lb.SearchEditText;
+import com.hxh.simpleview_lib.SearchEditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,5 +21,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void submit(View view) {
+
     }
 }

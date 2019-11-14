@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="simple_view_et_input" type="id" />
+    <item name="simple_view_iv_clear" type="id" />
+    <item name="simple_view_iv_pwd_visible" type="id" />
+</resources>

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000"
     tools:context=".MainActivity">
 
-    <com.hxh.simpleview_lb.SearchEditText
+    <com.hxh.simpleview_lib.SearchEditText
         android:id="@+id/set"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -17,4 +19,36 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.hxh.simpleview_lib.FormEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:form_et_hint="请输入"
+        />
+
+    <com.hxh.simpleview_lib.FormEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:form_et_max_input_length="11"
+        app:form_et_hint="请输入手机号"
+        app:form_et_type="phone"
+        />
+
+    <com.hxh.simpleview_lib.FormEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:form_et_max_input_length="10"
+        app:form_et_hint="请输入密码"
+        app:form_et_type="password"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:enabled="false"
+        android:onClick="submit"
+        />
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:background="@drawable/simple_view_shape_rect_circle_light_gray"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    >
+
+    <EditText
+        android:id="@id/simple_view_et_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:minHeight="30dp"
+        android:hint="请输入"
+        android:background="@color/simple_view_trasparent_color"
+        android:maxLines="1"
+        android:singleLine="true"
+        />
+
+    <ImageView
+        android:id="@id/simple_view_iv_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/simple_view_icon_delete"
+        android:padding="3dp"
+        />
+
+    <ImageView
+        android:id="@id/simple_view_iv_pwd_visible"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/simple_view_icon_view"
+        android:padding="3dp"
+        />
+
+</LinearLayout>

@@ -1,6 +1,7 @@
-package com.hxh.simpleview_lb;
+package com.hxh.simpleview_lib;
 
 import android.content.Context;
+import android.widget.Toast;
 
 public class UIUtils {
     // /////////////////dip和px转换//////////////////////////
@@ -33,5 +34,9 @@ public class UIUtils {
     public static int px2sp(Context context, float pxValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
+    }
+
+    public static void showToast(Context context, String msg) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 }

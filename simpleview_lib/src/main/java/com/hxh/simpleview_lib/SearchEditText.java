@@ -1,4 +1,4 @@
-package com.hxh.simpleview_lb;
+package com.hxh.simpleview_lib;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
@@ -34,15 +33,15 @@ public class SearchEditText extends AppCompatEditText {
      */
     private void init()
     {
-        Drawable draLeft = getResources().getDrawable(R.drawable.icon_search);
+        Drawable draLeft = getResources().getDrawable(R.drawable.simple_view_icon_search);
         draLeft.setBounds(0, 0, draLeft.getIntrinsicWidth(), draLeft.getIntrinsicHeight());
         setCompoundDrawables(draLeft, null, null, null);
-        setPadding(UIUtils.dip2px(getContext(), 15), 0, 0, 0);
+        setPadding(UIUtils.dip2px(getContext(), 15), 0, UIUtils.dip2px(getContext(), 6), 0);
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
         setCompoundDrawablePadding(UIUtils.dip2px(getContext(), 5));
         setMinHeight(UIUtils.dip2px(getContext(), 30));
         setGravity(Gravity.CENTER_VERTICAL);
-        setBackgroundResource(R.drawable.shape_rect_circle_light_gray);
+        setBackgroundResource(R.drawable.simple_view_shape_rect_circle_light_gray);
         setMaxLines(1);
         setInputType(InputType.TYPE_CLASS_TEXT);
         setSingleLine(true);
