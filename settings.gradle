@@ -1,2 +1,2 @@
-include ':app', ':simpleview_lib'
+include ':app', ':simpleview_lib', ':txwebview'
 rootProject.name='CustomSimpleView'

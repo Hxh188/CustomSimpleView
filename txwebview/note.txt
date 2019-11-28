@@ -1,0 +1,9 @@
+混淆规则：
+
+#------------------------ Tecent webview begin -------------------------
+-keepclassmembers class * extends com.tencent.smtt.sdk.WebChromeClient {
+            public void openFileChooser(...);
+}
+-keep class com.tencent.smtt.** {*;}
+-keep class com.tencent.tbs.video.interfaces.** {*;}
+#------------------------ Tecent webview end-------------------------
