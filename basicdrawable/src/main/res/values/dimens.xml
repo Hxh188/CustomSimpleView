@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="basicdra_small_corner">5dp</dimen>
+    <dimen name="basicdra_big_corner">25dp</dimen>
+    <dimen name="basicdra_border">1dp</dimen>
+</resources>
