@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android"
-    >
-    <item android:state_pressed="false" android:state_focused="false" android:drawable="@drawable/basicdra_shape_circle_colorprimary"/>
-    <item android:state_pressed="true" android:drawable="@drawable/basicdra_shape_circle_colorprimarylight"/>
-    <item android:state_focused="true" android:drawable="@drawable/basicdra_shape_circle_colorprimarylight"/>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true">
+        <selector
+            >
+            <item android:state_pressed="false" android:state_focused="false" android:drawable="@drawable/basicdra_shape_circle_colorprimary"/>
+            <item android:state_pressed="true" android:drawable="@drawable/basicdra_shape_circle_colorprimarylight"/>
+            <item android:state_focused="true" android:drawable="@drawable/basicdra_shape_circle_colorprimarylight"/>
+        </selector>
+    </item>
+    <item android:state_enabled="false" android:drawable="@drawable/basicdra_shape_circle_gray"/>
 </selector>
