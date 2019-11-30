@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SimpleViewFormEditText">
+        <attr name="form_et_type" format="enum">
+            <enum name="text" value="0"/>
+            <enum name="phone" value="1"/>
+            <enum name="password" value="2"/>
+        </attr>
+        <attr name="form_et_hint" format="string|reference"/>
+        <attr name="form_et_max_input_length" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="SimpleViewSetting">
+        <attr name="setting_title" format="string|reference"/>
+        <attr name="setting_subtitle" format="string|reference"/>
+        <attr name="setting_right_text" format="string|reference"/>
+        <attr name="setting_right_icon_visible" format="boolean"/>
+    </declare-styleable>
+</resources>

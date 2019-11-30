@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">basicdrawable</string>
+
+    <string name="txt_back">&#xe6a2;</string>
+    <string name="txt_close">&#xe605;</string>
 </resources>

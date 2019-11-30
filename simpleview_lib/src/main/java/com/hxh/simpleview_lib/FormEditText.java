@@ -47,11 +47,11 @@ public class FormEditText extends LinearLayout implements View.OnClickListener {
 
         if(attrs != null)
         {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FormEditText);
-            int type = a.getInt(R.styleable.FormEditText_form_et_type, FormType.TEXT.value);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.SimpleViewFormEditText);
+            int type = a.getInt(R.styleable.SimpleViewFormEditText_form_et_type, FormType.TEXT.value);
             inputFormType = FormType.getEnum(type);
-            hintText = a.getString(R.styleable.FormEditText_form_et_hint);
-            maxInputLength = a.getInt(R.styleable.FormEditText_form_et_max_input_length, 15);
+            hintText = a.getString(R.styleable.SimpleViewFormEditText_form_et_hint);
+            maxInputLength = a.getInt(R.styleable.SimpleViewFormEditText_form_et_max_input_length, 15);
             a.recycle();
         }
 

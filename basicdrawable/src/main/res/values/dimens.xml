@@ -3,4 +3,7 @@
     <dimen name="basicdra_small_corner">5dp</dimen>
     <dimen name="basicdra_big_corner">25dp</dimen>
     <dimen name="basicdra_border">1dp</dimen>
+    <dimen name="spacing_medium">10dp</dimen>
+    <dimen name="margin_primary">10dp</dimen>
+    <dimen name="divider_height">1px</dimen>
 </resources>
