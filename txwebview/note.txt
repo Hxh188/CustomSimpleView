@@ -3,6 +3,7 @@
 #------------------------ Tecent webview begin -------------------------
 -keepclassmembers class * extends com.tencent.smtt.sdk.WebChromeClient {
             public void openFileChooser(...);
+            public boolean onShowFileChooser(...);
 }
 -keep class com.tencent.smtt.** {*;}
 -keep class com.tencent.tbs.video.interfaces.** {*;}
@@ -20,3 +21,26 @@
 # for DexGuard only
 -keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 #------------------------ glide end -------------------------
+
+
+#------------------------ imageselect begin -------------------------
+-keep class com.yuyh.** {*;}
+#------------------------ imageselect end -------------------------
+
+
+#------------------------ rxjava begin -------------------------
+#----------- rxjava rxandroid----------------
+-dontwarn sun.misc.**
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+    long producerIndex;
+    long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
+-dontnote rx.internal.util.PlatformDependent
+#------------------------ rxjava end -------------------------
+

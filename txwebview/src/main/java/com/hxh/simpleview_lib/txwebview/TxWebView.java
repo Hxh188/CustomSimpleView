@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 
 import com.tencent.smtt.sdk.ValueCallback;
@@ -11,6 +12,8 @@ import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
+
+import java.io.File;
 
 public class TxWebView extends WebView {
     //选择图片回调
@@ -140,13 +143,18 @@ public class TxWebView extends WebView {
     /**
      * 选择图片后显示图片
      * @param requeCodeEqual
-     * @param imgFile
      */
     public void loadImage(boolean requeCodeEqual, String imgFile)
     {
+        if(TextUtils.isEmpty(imgFile) || !new File(imgFile).exists())
+        {
+            resetImageSelect();
+            return;
+        }
+
         if(mUploadMessage != null) {
             if (requeCodeEqual) {
-                Uri result = Uri.parse(imgFile);
+                Uri result = Uri.fromFile(new File(imgFile));
                 mUploadMessage.onReceiveValue(result);
             } else {
                 mUploadMessage.onReceiveValue(null);
@@ -156,12 +164,24 @@ public class TxWebView extends WebView {
         {
             if(requeCodeEqual)
             {
-                Uri result = Uri.parse(imgFile);
+                Uri result = Uri.fromFile(new File(imgFile));
                 mUploadMessageAboveL.onReceiveValue(new Uri[]{result});
             }else
             {
                 mUploadMessageAboveL.onReceiveValue(null);
             }
+            mUploadMessageAboveL = null;
+        }
+    }
+
+    public void resetImageSelect()
+    {
+        if(mUploadMessage != null) {
+            mUploadMessage.onReceiveValue(null);
+            mUploadMessage = null;
+        }else if(mUploadMessageAboveL != null)
+        {
+            mUploadMessageAboveL.onReceiveValue(null);
             mUploadMessageAboveL = null;
         }
     }
