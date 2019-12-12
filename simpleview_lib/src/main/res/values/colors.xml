@@ -7,4 +7,5 @@
     <color name="text_primary_light">#60000000</color>
     <!-- 二号字体颜色 -->
     <color name="text_secondary">#ff666666</color>
+    <color name="transparent" />
 </resources>
