@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 
 import com.tencent.smtt.sdk.ValueCallback;
@@ -12,9 +13,14 @@ import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
+import java.io.File;
+
 public class TxWebView extends WebView {
     //选择图片回调
     private ValueCallback<Uri> mUploadMessage;
+    private ValueCallback<Uri[]> mUploadMessageAboveL;
+
+    private OnOperationListener operationListener;
 
     public TxWebView(Context context) {
         super(context);
@@ -90,7 +96,9 @@ public class TxWebView extends WebView {
 
             @Override
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> valueCallback, FileChooserParams fileChooserParams) {
-                return super.onShowFileChooser(webView, valueCallback, fileChooserParams);
+                mUploadMessageAboveL = valueCallback;
+                choosePicture();
+                return true;
             }
 
             // Android > 4.1.1 调用这个方法
@@ -135,22 +143,46 @@ public class TxWebView extends WebView {
     /**
      * 选择图片后显示图片
      * @param requeCodeEqual
-     * @param imgFile
      */
     public void loadImage(boolean requeCodeEqual, String imgFile)
     {
-        if (requeCodeEqual) {
-            if(mUploadMessage != null)
-            {
-                Uri result = Uri.parse(imgFile);
+        if(TextUtils.isEmpty(imgFile) || !new File(imgFile).exists())
+        {
+            resetImageSelect();
+            return;
+        }
+
+        if(mUploadMessage != null) {
+            if (requeCodeEqual) {
+                Uri result = Uri.fromFile(new File(imgFile));
                 mUploadMessage.onReceiveValue(result);
-                mUploadMessage = null;
-            }
-        } else {
-            if(mUploadMessage != null)
-            {
+            } else {
                 mUploadMessage.onReceiveValue(null);
             }
+            mUploadMessage = null;
+        }else if(mUploadMessageAboveL != null)
+        {
+            if(requeCodeEqual)
+            {
+                Uri result = Uri.fromFile(new File(imgFile));
+                mUploadMessageAboveL.onReceiveValue(new Uri[]{result});
+            }else
+            {
+                mUploadMessageAboveL.onReceiveValue(null);
+            }
+            mUploadMessageAboveL = null;
+        }
+    }
+
+    public void resetImageSelect()
+    {
+        if(mUploadMessage != null) {
+            mUploadMessage.onReceiveValue(null);
+            mUploadMessage = null;
+        }else if(mUploadMessageAboveL != null)
+        {
+            mUploadMessageAboveL.onReceiveValue(null);
+            mUploadMessageAboveL = null;
         }
     }
 
@@ -167,23 +199,37 @@ public class TxWebView extends WebView {
      * 显示进度
      * @param newProgress
      */
-    protected void showProgress(int newProgress) {
-
+    private void showProgress(int newProgress) {
+        if(operationListener != null)
+        {
+            operationListener.showProgress(newProgress);
+        }
     }
 
     /**
      * 显示标题
      * @param title
      */
-    protected void showTitle(String title)
+    private void showTitle(String title)
     {
-
+        if(operationListener != null)
+        {
+            operationListener.showTitle(title);
+        }
     }
+
     /**
      * 跳转选择图片
      */
-    protected void choosePicture() {
+    private void choosePicture() {
+        if(operationListener != null)
+        {
+            operationListener.choosePicture();
+        }
+    }
 
+    public void setOperationListener(OnOperationListener operationListener) {
+        this.operationListener = operationListener;
     }
 
     final class MyWebViewClient extends WebViewClient {
@@ -195,5 +241,25 @@ public class TxWebView extends WebView {
         public void onPageStarted(WebView webView, String s, Bitmap bitmap) {
             super.onPageStarted(webView, s, bitmap);
         }
+    }
+
+    public interface OnOperationListener
+    {
+        /**
+         * 显示进度
+         * @param newProgress
+         */
+        public void showProgress(int newProgress);
+
+        /**
+         * 显示标题
+         * @param title
+         */
+        public void showTitle(String title);
+
+        /**
+         * 跳转选择图片
+         */
+        public void choosePicture();
     }
 }
